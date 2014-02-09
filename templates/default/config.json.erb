@@ -1,0 +1,15 @@
+{
+    "repositories": [
+<% if not @packagist -%>
+        {
+            "packagist": false
+        }<% if not @repositories.empty? %>,<% end %>
+<% end %>
+<% @repositories.each_with_index do |repo, index| -%>
+        {
+            "type": "<%= repo[:type] %>",
+            "url":  "<%= repo[:url] %>"
+        }<% if index != @repositories.length-1 %>,<%end %>
+<% end %>
+    ]
+}
